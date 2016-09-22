@@ -1,0 +1,22 @@
+fltiny now comes with automake and autoconf.
+
+Easiest way to install fltiny is by typing:
+
+./configure
+make
+make install
+
+If you want to compile tlf from the repo, please do a 
+
+autoreconf --install
+
+before the above commands.
+
+By default, fltiny will install into /usr/local/bin.
+
+If you want to change any of these paths, you can do this with the
+configure script too, e.g. './configure --prefix=/usr' will install
+fltiny into /usr/bin.
+
+See doc/README for more details.
+
