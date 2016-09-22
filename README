@@ -1,6 +1,22 @@
+fltiny README
+
+fltiny is a 'proxy' software, which reads data from server as
+client, and send it to a client as server.
+
+This special situation, the server is the Fldigi, and the client
+is a serial port, where an Arduino listens, and runs tinyFSK.
+
+fltiny uses Fldigi's xmlrpc interface, so you need the xmlrpc
+library (see README in top of source).
+
+The name of the serial port is "/dev/fsk" - you can change it
+in serialmodem.c.
+
 
 Requested packages:
 - gcc
 - autotools
-- pkg-config
 - libxmlrpc-core-c3-dev
+
+Fldigi's webpage: http://www.w1hkj.com/
+tinyFSK: http://www.frontiernet.net/~aflowers/tinyfsk/
