@@ -18,5 +18,20 @@ If you want to change any of these paths, you can do this with the
 configure script too, e.g. './configure --prefix=/usr' will install
 fltiny into /usr/bin.
 
-See doc/README for more details.
+To run it, just simple type:
 
+$ fltiny
+
+fltiny runs in foreground, so it will not to give back the prompt.
+If you want to run it in background, run it with "&" at the and of the
+line:
+
+$ fltiny &
+
+
+It will notify you and exit if any problem occures with serial port.
+It will NOT notify, and DOESN'T exit, if any error occures with Fldigi.
+If Fldigi unavailable (eg. you closed it), then fltiny runs away. If
+you start again Fldigi, fltiny will realizes it, and work away.
+
+73, Ervin
