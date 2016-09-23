@@ -38,6 +38,11 @@ xmlrpc_env env;
 xmlrpc_server_info * serverInfoP;
 int ptt;
 
+void xmlrpc_res_init(xmlrpc_res * res) {
+    res->stringval = NULL;
+    res->byteval = NULL;
+}
+
 int fldigi_xmlrpc_init() {
     xmlrpc_client_init2(&env, XMLRPC_CLIENT_NO_FLAGS, NAME, XMLRPCVERSION, NULL, 0);
     serverInfoP = xmlrpc_server_info_new(&env, fldigi_url);
@@ -167,6 +172,8 @@ int fldigi_get_tx_text(char * line) {
     xmlrpc_env env;
     line[0] = '\0';
 
+    xmlrpc_res_init(&result);
+
     rc = fldigi_xmlrpc_query(&result, &env, "tx.get_data", "");
     if (rc != 0) {
         return 0;
@@ -189,6 +196,8 @@ int fldigi_get_rxtx_state() {
     xmlrpc_res result;
     xmlrpc_env env;
 
+    xmlrpc_res_init(&result);
+
     rc = fldigi_xmlrpc_query(&result, &env, "main.get_trx_state", "");
     if (rc != 0) {
         return 0;
@@ -201,9 +210,9 @@ int fldigi_get_rxtx_state() {
             ptt = RX;
         }
         free((void *)result.stringval);
-        //if (result.byteval != NULL) {
-        //    free((void *)result.byteval);
-        //}
+        if (result.byteval != NULL) {
+            free((void *)result.byteval);
+        }
     }
     return 0;
 }
