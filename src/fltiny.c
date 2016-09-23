@@ -176,7 +176,6 @@ int fldigi_get_tx_text(char * line) {
             line[0] = '\0';
             memcpy(line, result.byteval, result.intval);
             line[result.intval] = '\0';
-            free((void *)result.byteval);
         }
         if (result.byteval != NULL) {
             free((void *)result.byteval);
@@ -202,9 +201,9 @@ int fldigi_get_rxtx_state() {
             ptt = RX;
         }
         free((void *)result.stringval);
-        if (result.byteval != NULL) {
-            free((void *)result.byteval);
-        }
+        //if (result.byteval != NULL) {
+        //    free((void *)result.byteval);
+        //}
     }
     return 0;
 }
@@ -215,7 +214,7 @@ void exit_handler() {
 
 int main() {
     int i, rc;
-    char line[100];
+    char line[1024];
     static int ptt_last = RX;
 
     line[0] = '\0';
